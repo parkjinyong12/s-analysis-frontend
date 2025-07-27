@@ -115,3 +115,61 @@ Thumbs.db
 # Auto-generated files
 auto-imports.d.ts
 components.d.ts
+
+# Project specific files (temporary/process files)
+.backend_pid
+.frontend_pid
+
+# IDE and editor files
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+*.swp
+*.swo
+*~
+
+# Local development files
+.env.development
+.env.production
+.env.staging
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# System files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Package manager files
+yarn.lock
+pnpm-lock.yaml
+package-lock.json.backup
+
+# Test files
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Build artifacts
+build/
+out/
+.next/
+.nuxt/
+dist-ssr/
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Backup and temporary files
+*.tmp
+*.temp
+.cache/
