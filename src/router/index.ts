@@ -13,8 +13,8 @@ const routes: RouteRecordRaw[] = [
     name: 'Home',
     component: HomeBoard,
     meta: {
-      title: '홈',
-      icon: 'home'
+      title: '대시보드',
+      icon: '🏠'
     }
   },
   {
@@ -22,8 +22,8 @@ const routes: RouteRecordRaw[] = [
     name: 'Stock',
     component: StockBoard,
     meta: {
-      title: '주식 관리',
-      icon: 'chart-bar'
+      title: '주식 목록',
+      icon: '📊'
     }
   },
   {
@@ -31,8 +31,17 @@ const routes: RouteRecordRaw[] = [
     name: 'Trading',
     component: TradingBoard,
     meta: {
-      title: '거래 데이터',
-      icon: 'currency-dollar'
+      title: '거래 현황',
+      icon: '📈'
+    }
+  },
+  {
+    path: '/collector',
+    name: 'Collector',
+    component: DataCollector,
+    meta: {
+      title: '데이터 수집',
+      icon: '🔄'
     }
   },
   {
@@ -40,17 +49,8 @@ const routes: RouteRecordRaw[] = [
     name: 'History',
     component: HistoryBoard,
     meta: {
-      title: '히스토리',
-      icon: 'clock'
-    }
-  },
-  {
-    path: '/collector',
-    name: 'DataCollector',
-    component: DataCollector,
-    meta: {
-      title: '데이터 수집',
-      icon: 'cloud-download'
+      title: '거래 기록',
+      icon: '📋'
     }
   },
   {
@@ -58,8 +58,8 @@ const routes: RouteRecordRaw[] = [
     name: 'ApiTest',
     component: ApiTest,
     meta: {
-      title: 'API 테스트',
-      icon: 'code-bracket'
+      title: 'API 상태',
+      icon: '🧪'
     }
   },
   {
@@ -67,8 +67,8 @@ const routes: RouteRecordRaw[] = [
     name: 'Settings',
     component: ApiSettings,
     meta: {
-      title: '설정',
-      icon: 'cog'
+      title: '시스템 설정',
+      icon: '⚙️'
     }
   }
 ]
