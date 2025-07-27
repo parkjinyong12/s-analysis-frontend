@@ -1,7 +1,5 @@
 import { RouteRecordRaw } from 'vue-router'
 import HomeBoard from '../features/home/HomeBoard.vue'
-import SampleBoard from '../features/sample/SampleBoard.vue'
-import Sample2Board from '../features/sample2/Sample2Board.vue'
 import StockBoard from '../features/stock/StockBoard.vue'
 import TradingBoard from '../features/trading/TradingBoard.vue'
 import HistoryBoard from '../features/history/HistoryBoard.vue'
@@ -17,24 +15,6 @@ const routes: RouteRecordRaw[] = [
     meta: {
       title: '홈',
       icon: 'home'
-    }
-  },
-  {
-    path: '/sample',
-    name: 'Sample',
-    component: SampleBoard,
-    meta: {
-      title: '샘플',
-      icon: 'document'
-    }
-  },
-  {
-    path: '/sample2',
-    name: 'Sample2',
-    component: Sample2Board,
-    meta: {
-      title: '샘플2',
-      icon: 'document-duplicate'
     }
   },
   {

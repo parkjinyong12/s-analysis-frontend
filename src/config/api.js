@@ -102,9 +102,6 @@ export const API_ENDPOINTS = {
     DELETE: '/api/v1/trading'
   },
   
-  // User API
-  USERS: '/api/v1/users',
-  
   // Collector API
   COLLECTOR: {
     STATUS: '/api/v1/collector/status',
