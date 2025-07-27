@@ -61,14 +61,8 @@
           <span class="backup-label">거래 데이터:</span>
           <span class="backup-value">{{ testModeStatus.backup_summary?.trading_data_count || 0 }}개</span>
         </div>
-        <div class="backup-item">
-          <span class="backup-label">샘플:</span>
-          <span class="backup-value">{{ testModeStatus.backup_summary?.samples_count || 0 }}개</span>
-        </div>
-        <div class="backup-item">
-          <span class="backup-label">사용자:</span>
-          <span class="backup-value">{{ testModeStatus.backup_summary?.users_count || 0 }}개</span>
-        </div>
+
+
       </div>
     </section>
 
@@ -313,26 +307,25 @@ export default {
       
       // 테스트 항목 목록
       testEndpoints: [
-        { name: 'Sample 목록 조회', path: 'samples/', method: 'GET', description: '샘플 데이터 목록을 조회합니다', hasParams: false },
-        { name: 'Sample 검색', path: 'samples/search', method: 'GET', description: '샘플 데이터를 검색합니다', hasParams: true, params: { name: 'Test' } },
-        { name: 'Stock 목록 조회', path: 'stocks/', method: 'GET', description: '주식 목록을 조회합니다', hasParams: false },
-        { name: 'Stock 검색', path: 'stocks/search', method: 'GET', description: '주식명으로 검색합니다', hasParams: true, params: { name: '삼성' } },
-        { name: 'Stock 코드별 조회', path: 'stocks/code/005930', method: 'GET', description: '주식 코드로 상세 정보를 조회합니다', hasParams: false },
-        { name: 'Trading 목록 조회', path: 'trading/', method: 'GET', description: '거래 데이터 목록을 조회합니다', hasParams: false },
-        { name: 'Trading 검색', path: 'trading/search', method: 'GET', description: '거래 데이터를 검색합니다', hasParams: true, params: { query: '삼천당제약' } },
-        { name: 'Trading 날짜 범위 조회', path: 'trading/date-range', method: 'GET', description: '특정 기간의 거래 데이터를 조회합니다 (2024년)', hasParams: true, params: { start_date: '2024-01-01', end_date: '2024-12-31' } },
-        { name: 'Trading 주식별 조회', path: 'trading/stock/005930', method: 'GET', description: '특정 주식의 거래 데이터를 조회합니다 (005930)', hasParams: false },
-        { name: 'Collector 상태 조회', path: 'collector/status', method: 'GET', description: '데이터 수집기 상태를 확인합니다', hasParams: false },
-        { name: 'Collector 사용 가능한 주식 목록', path: 'collector/stocks', method: 'GET', description: '수집 가능한 주식 목록을 조회합니다', hasParams: false },
-        { name: 'User 목록 조회', path: 'users/', method: 'GET', description: '사용자 목록을 조회합니다', hasParams: false },
-        { name: 'Health Check', path: 'api-test/health', method: 'GET', description: '서버 상태를 확인합니다', hasParams: false },
-        { name: 'Database 테스트', path: 'api-test/database', method: 'GET', description: '데이터베이스 연결을 테스트합니다', hasParams: false },
-        { name: '테스트 모드 상태', path: 'api-test/test-mode/status', method: 'GET', description: '테스트 모드 상태를 확인합니다', hasParams: false },
-        { name: 'History 통계', path: 'history/stats', method: 'GET', description: '히스토리 통계를 조회합니다', hasParams: false },
-        { name: 'History 최근 활동', path: 'history/latest', method: 'GET', description: '최근 활동 내역을 조회합니다', hasParams: false },
-        { name: 'History 활동 요약', path: 'history/summary', method: 'GET', description: '활동 요약을 조회합니다', hasParams: false },
-        { name: 'History 데이터 히스토리', path: 'history/data', method: 'GET', description: '데이터 변경 히스토리를 조회합니다', hasParams: false },
-        { name: 'History 시스템 로그', path: 'history/system', method: 'GET', description: '시스템 로그를 조회합니다', hasParams: false }
+
+        { name: 'Stock 목록 조회', path: 'api/v1/stocks/', method: 'GET', description: '주식 목록을 조회합니다', hasParams: false },
+        { name: 'Stock 검색', path: 'api/v1/stocks/search', method: 'GET', description: '주식명으로 검색합니다', hasParams: true, params: { name: '삼성' } },
+        { name: 'Stock 코드별 조회', path: 'api/v1/stocks/code/005930', method: 'GET', description: '주식 코드로 상세 정보를 조회합니다', hasParams: false },
+        { name: 'Trading 목록 조회', path: 'api/v1/trading/', method: 'GET', description: '거래 데이터 목록을 조회합니다', hasParams: false },
+        { name: 'Trading 검색', path: 'api/v1/trading/search', method: 'GET', description: '거래 데이터를 검색합니다', hasParams: true, params: { query: '삼천당제약' } },
+        { name: 'Trading 날짜 범위 조회', path: 'api/v1/trading/date-range', method: 'GET', description: '특정 기간의 거래 데이터를 조회합니다 (2024년)', hasParams: true, params: { start_date: '2024-01-01', end_date: '2024-12-31' } },
+        { name: 'Trading 주식별 조회', path: 'api/v1/trading/stock/005930', method: 'GET', description: '특정 주식의 거래 데이터를 조회합니다 (005930)', hasParams: false },
+        { name: 'Collector 상태 조회', path: 'api/v1/collector/status', method: 'GET', description: '데이터 수집기 상태를 확인합니다', hasParams: false },
+        { name: 'Collector 사용 가능한 주식 목록', path: 'api/v1/collector/stocks', method: 'GET', description: '수집 가능한 주식 목록을 조회합니다', hasParams: false },
+
+        { name: 'Health Check', path: 'api/v1/test/health', method: 'GET', description: '서버 상태를 확인합니다', hasParams: false },
+        { name: 'Database 테스트', path: 'api/v1/test/database', method: 'GET', description: '데이터베이스 연결을 테스트합니다', hasParams: false },
+        { name: '테스트 모드 상태', path: 'api/v1/test/test-mode/status', method: 'GET', description: '테스트 모드 상태를 확인합니다', hasParams: false },
+        { name: 'History 통계', path: 'api/v1/history/stats', method: 'GET', description: '히스토리 통계를 조회합니다', hasParams: false },
+        { name: 'History 최근 활동', path: 'api/v1/history/latest', method: 'GET', description: '최근 활동 내역을 조회합니다', hasParams: false },
+        { name: 'History 활동 요약', path: 'api/v1/history/summary', method: 'GET', description: '활동 요약을 조회합니다', hasParams: false },
+        { name: 'History 데이터 히스토리', path: 'api/v1/history/data', method: 'GET', description: '데이터 변경 히스토리를 조회합니다', hasParams: false },
+        { name: 'History 시스템 로그', path: 'api/v1/history/system', method: 'GET', description: '시스템 로그를 조회합니다', hasParams: false }
       ],
       
       // 테스트 모드 상태
@@ -817,13 +810,17 @@ export default {
           }
         }
 
-        // Trading 검색만 실제 API로 직접 요청
+        // 모든 API를 직접 호출하도록 수정
         let response;
         if (endpoint.name === 'Trading 검색') {
-          response = await api.get('/trading/search' + url.split('trading/search')[1]);
+          response = await api.get('/api/v1/trading/search' + url.split('api/v1/trading/search')[1], {
+            timeout: 60000 // 1분 타임아웃
+          });
         } else {
-          // 기존 방식(테스트 프록시)
-          response = await api.get(`/api-test/endpoint/${url}`);
+          // 직접 API 호출
+          response = await api.get(url, {
+            timeout: 60000 // 1분 타임아웃
+          });
         }
         
         const endTime = Date.now();
@@ -832,11 +829,11 @@ export default {
         // 결과 저장
         this.individualTestResults[index] = {
           loading: false,
-          success: response.data.success !== undefined ? response.data.success : true,
+          success: response.status >= 200 && response.status < 300,
           response_time: responseTime,
-          status_code: response.data.status_code || response.status,
-          response_data: response.data.response_data || response.data,
-          error: response.data.error,
+          status_code: response.status,
+          response_data: response.data,
+          error: null,
           timestamp: new Date().toISOString()
         };
         
@@ -853,13 +850,13 @@ export default {
           loading: false,
           success: false,
           response_time: 0,
-          status_code: null,
+          status_code: error.response?.status || null,
           response_data: null,
-          error: error.message || '테스트 실행 중 오류가 발생했습니다.',
+          error: error.response?.data?.error || error.message || '테스트 실행 중 오류가 발생했습니다.',
           timestamp: new Date().toISOString()
         };
         
-        this.showError(`${endpoint.name} 테스트 실행에 실패했습니다.`);
+        this.showError(`${endpoint.name} 테스트 실행에 실패했습니다: ${this.individualTestResults[index].error}`);
       } finally {
         this.isLoading = false;
       }

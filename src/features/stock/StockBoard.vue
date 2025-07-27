@@ -312,7 +312,7 @@ export default {
     async loadStocks() {
       this.loading = true
       try {
-        const response = await api.get('/stocks/')
+        const response = await api.get('/api/v1/stocks/')
         this.stocks = response.data
       } catch (error) {
         console.error('주식 목록 조회 실패:', error)
@@ -338,7 +338,7 @@ export default {
           if (this.searchName.trim()) params.append('name', this.searchName.trim())
           if (this.searchCode.trim()) params.append('code', this.searchCode.trim())
           
-          const response = await api.get(`/stocks/search?${params}`)
+          const response = await api.get(`/api/v1/stocks/search?${params}`)
           this.stocks = response.data
         } catch (error) {
           console.error('주식 검색 실패:', error)
@@ -369,7 +369,7 @@ export default {
       }
 
       try {
-        await api.delete(`/stocks/${stock.id}`)
+        await api.delete(`/api/v1/stocks/${stock.id}`)
         alert('주식이 삭제되었습니다.')
         await this.loadStocks()
       } catch (error) {
@@ -384,11 +384,11 @@ export default {
       try {
         if (this.showCreateModal) {
           // 새 주식 생성
-          await api.post('/stocks/', this.formData)
+          await api.post('/api/v1/stocks/', this.formData)
           alert('새 주식이 등록되었습니다.')
         } else {
           // 주식 수정
-          await api.put(`/stocks/${this.editingStockId}`, this.formData)
+                      await api.put(`/api/v1/stocks/${this.editingStockId}`, this.formData)
           alert('주식 정보가 수정되었습니다.')
         }
         
@@ -430,7 +430,7 @@ export default {
 
       this.loading = true
       try {
-                 const response = await api.post('/collector/insert-default-stocks')
+                 const response = await api.post('/api/v1/collector/insert-default-stocks')
                  alert(response.data.message)
         await this.loadStocks()
              } catch (error) {
@@ -489,10 +489,11 @@ export default {
         const formData = new FormData()
         formData.append('file', this.selectedFile)
 
-        const response = await api.post('/stocks/upload-excel', formData, {
+        const response = await api.post('/api/v1/stocks/upload-excel', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
-          }
+          },
+          timeout: 300000 // 5분 타임아웃
         })
 
         this.uploadResult = response.data.results

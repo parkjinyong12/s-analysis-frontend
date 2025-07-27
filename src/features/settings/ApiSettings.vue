@@ -67,14 +67,14 @@
             v-model.number="formData.timeout" 
             type="number"
             min="1000"
-            max="60000"
+            max="600000"
             step="1000"
             required
             class="form-input"
             :class="{ 'error': errors.timeout }"
           />
           <span v-if="errors.timeout" class="error-text">{{ errors.timeout }}</span>
-          <small class="form-help">API 요청 타임아웃 시간 (1000-60000ms)</small>
+          <small class="form-help">API 요청 타임아웃 시간 (1000-600000ms, 최대 10분)</small>
         </div>
 
         <!-- 디버그 모드 -->
@@ -165,7 +165,7 @@ export default {
       // 폼 데이터
       formData: {
         baseUrl: '',
-        timeout: 10000,
+        timeout: 300000,
         debug: false
       },
       
@@ -193,15 +193,15 @@ export default {
         {
           name: '로컬 개발 서버',
           description: '기본 개발 환경 설정',
-          url: 'http://127.0.0.1:5000',
-          timeout: 10000,
+          url: 'http://127.0.0.1:5001',
+          timeout: 300000,
           debug: true
         },
         {
           name: '로컬 호스트',
           description: 'localhost 사용',
-          url: 'http://localhost:5000',
-          timeout: 10000,
+          url: 'http://localhost:5001',
+          timeout: 300000,
           debug: true
         },
         {
@@ -226,7 +226,7 @@ export default {
     isFormValid() {
       return this.formData.baseUrl && 
              this.formData.timeout >= 1000 && 
-             this.formData.timeout <= 60000 &&
+             this.formData.timeout <= 600000 &&
              Object.keys(this.errors).length === 0;
     }
   },

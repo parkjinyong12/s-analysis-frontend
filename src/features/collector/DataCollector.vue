@@ -300,6 +300,8 @@ export default {
         const response = await api.post(API_ENDPOINTS.COLLECTOR.START, {
           years: parseInt(this.settings.years),
           max_pages: parseInt(this.settings.max_pages)
+        }, {
+          timeout: 300000 // 5분 타임아웃
         })
         
         this.$emit('show-message', response.data.message, 'success')
@@ -371,7 +373,9 @@ export default {
 
       this.isLoading = true
       try {
-        const response = await api.post(API_ENDPOINTS.COLLECTOR.CALCULATE_ACCUMULATED)
+        const response = await api.post(API_ENDPOINTS.COLLECTOR.CALCULATE_ACCUMULATED, {}, {
+          timeout: 300000 // 5분 타임아웃
+        })
         this.$emit('show-message', `✅ ${response.data.message}`, 'success')
       } catch (error) {
         console.error('누적 데이터 계산 실패:', error)

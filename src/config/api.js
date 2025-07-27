@@ -12,7 +12,7 @@ const API_CONFIG = reactive({
   BASE_URL: localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:5001',
   
   // 요청 타임아웃 (밀리초)
-  TIMEOUT: parseInt(localStorage.getItem('api_timeout')) || import.meta.env.VITE_API_TIMEOUT || 10000,
+  TIMEOUT: parseInt(localStorage.getItem('api_timeout')) || import.meta.env.VITE_API_TIMEOUT || 300000,
   
   // 기본 헤더
   HEADERS: {
@@ -81,9 +81,6 @@ apiClient.interceptors.response.use(
 
 // API 엔드포인트 상수 (백엔드 실제 구조에 맞춤)
 export const API_ENDPOINTS = {
-  // Sample API
-  SAMPLES: '/api/v1/samples',
-  
   // Stock API
   STOCKS: '/api/v1/stocks',
   STOCKS_BULK_CREATE: '/api/v1/stocks/bulk-create',
@@ -167,7 +164,7 @@ export const apiSettings = {
   
   // 설정 초기화
   resetToDefaults: () => {
-    const defaultURL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:5001';
+    const defaultURL = import.meta.env.VITE_API_BASE_URL || '';
     const defaultTimeout = import.meta.env.VITE_API_TIMEOUT || 10000;
     const defaultDebug = false;
     
